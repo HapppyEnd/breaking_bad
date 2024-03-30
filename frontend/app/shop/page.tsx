@@ -2,12 +2,14 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Category from "../components/categories";
 import Sorted from "../components/sorted";
-import { products } from "../db";
+// import { products } from "../db";
 import ShopCard from "../components/shop/card";
 import { useRouter } from "next/navigation";
+import getAllProducts from "../action/get-products";
 
-export default function Shop() {
+export default async function Shop() {
     const router = useRouter()
+    const products = await getAllProducts()
     return (
         <Container className="pt-32">
             <Row className="min-h-screen">
