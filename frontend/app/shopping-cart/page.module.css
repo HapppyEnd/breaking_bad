@@ -1,0 +1,16 @@
+#btn_delete {
+    padding: 8px;
+    border: 1px solid #28eac2;
+    border-radius: 10px;
+    color: #28eac2;
+}
+
+#btn_delete:hover {
+    border: 1px solid #22947d;
+    color: #22947d;
+}
+
+#product_title {
+    font-size: larger;
+    color: black;
+}

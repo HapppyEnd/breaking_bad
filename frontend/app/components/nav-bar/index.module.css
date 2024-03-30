@@ -1,0 +1,8 @@
+#navbar {
+    position: fixed;
+    width: 98vw;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}

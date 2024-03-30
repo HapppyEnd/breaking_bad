@@ -1,0 +1,28 @@
+#add_to_backet {
+    background-color: #e5fdf9;
+    position: fixed;
+    height: 4rem;
+    bottom: 0px;
+    width: 100vw;
+    left: 0px;
+    padding: 0px;
+}
+
+#add_button {
+    background-color: #28eac2;
+    min-height: 4rem;
+    width: 15rem;
+    margin-right: 0px;
+    margin-left: auto;
+    color: #e5fdf9;
+    font-weight: 700;
+}
+
+#add_to_backet_price {
+    min-height: 4rem;
+    text-align: center;
+    margin: auto;
+    width: 25rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
