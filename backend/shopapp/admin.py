@@ -1,5 +1,5 @@
 from django.contrib import admin
-from shopapp.models import Advantage, Order, Product, ProductsInOrder
+from shopapp.models import Advantage, Category, Order, Product, ProductsInOrder
 
 
 @admin.register(Advantage)
@@ -20,3 +20,8 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(ProductsInOrder)
 class ProductsInOrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'count',)
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title',)
