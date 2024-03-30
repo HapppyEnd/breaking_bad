@@ -3,8 +3,9 @@ import Header from "./components/header";
 import ShopCard from "./components/shop/card";
 import Brands from "./components/brands";
 import { products } from "@/app/db";
+import getAllProducts from "./action/get-products";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <Header />
