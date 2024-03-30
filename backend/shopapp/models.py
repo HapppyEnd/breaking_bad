@@ -1,6 +1,8 @@
-from django.db import models
-from django.core.validators import MinValueValidator
 from decimal import Decimal
+
+from django.core.validators import MinValueValidator
+from django.db import models
+
 
 class Advantage(models.Model):
     title = models.CharField('Преимущество', max_length=100)
@@ -13,8 +15,8 @@ class Product(models.Model):
     title = models.CharField('Название товара', max_length=50)
     description = models.TextField('Описание товара')
     price = models.DecimalField(
-        'Цена', max_digits=5, decimal_places=2,
-        validators=[MinValueValidator(limit_value=Decimal(0.1))])
+        'Цена', max_digits=10, decimal_places=2,
+        validators=[MinValueValidator(limit_value=Decimal(0.10))])
     advantages = models.ManyToManyField(
         'Advantage', verbose_name="Преимущества")
     image = models.TextField('Фото')
