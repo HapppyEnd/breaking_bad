@@ -1,39 +1,44 @@
 'use client';
 import { Container, Nav, Navbar } from "react-bootstrap";
 import styles from "./index.module.css";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function NavBAr() {
+    const router = useRouter()
+
     return (
         <Navbar bg="light" expand="sm" id={styles.navbar} className="shadow-md">
             <Container>
                 <Nav className="me-auto">
-                    <Navbar.Brand href="/">
+                    <Link href="/">
                         <img
                             alt=""
                             src="/images/logo.png"
                             height="5"
                             className="d-inline-block align-top"
                         />{' '}
-                    </Navbar.Brand>
+                    </Link>
                 </Nav>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav ">
                     <Nav className="m-auto mt-1">
-                        <Nav.Link href="/shop" className="m-auto">
-                            <span className="font-bold tracking-wide leading-5">Магазин</span>
-                        </Nav.Link>
+                        <Link href="/shop" className="m-auto no-underline font-bold text-black">
+                            <span className="tracking-wide leading-5">Магазин</span>
+                        </Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Nav>
-                    <Nav.Link href="/shopping-cart">
+                    <Link href="/shopping-cart">
                         <img
                             src="/images/navbar/shoping-bag.png"
                             width="30"
                             height="30"
                             className="d-inline-block align-top ms-3"
-                            alt="React Bootstrap logo"
+                            alt="shoping bag icons"
                         />
-                    </Nav.Link>
+                    </Link>
                 </Nav>
             </Container>
         </Navbar>

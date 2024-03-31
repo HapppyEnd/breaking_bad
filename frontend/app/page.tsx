@@ -3,6 +3,7 @@ import Header from "./components/header";
 import ShopCard from "./components/shop/card";
 import Brands from "./components/brands";
 import { products } from "@/app/db";
+import {GoToPage} from "./components/header-info/button";
 
 export default async function Home() {
   return (
@@ -13,7 +14,9 @@ export default async function Home() {
         <Row className="mt-5">
           {products.map((card) => (
             <Col xs={12} md={8} lg={6} xl={4} key={card.id} className="m-auto pb-12">
-              <ShopCard className="text-truncate">{card}</ShopCard>
+              <GoToPage url={`/shop/${card.id}`}>
+                <ShopCard className="text-truncate">{card}</ShopCard>
+              </GoToPage>
             </Col>
           ))}
         </Row>

@@ -82,7 +82,7 @@ export default function ShoppingCart() {
                     </Row>
                 </Col>
             </Row>
-            <ModalCheckout show={modalShow} onHide={() => setModalShow(false)} />
+            <ModalCheckout show={modalShow} set={setOrder} onHide={() => setModalShow(false)} />
         </Container>
     )
 }

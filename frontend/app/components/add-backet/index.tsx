@@ -2,7 +2,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 import styles from "./index.module.css";
 
-
 export default function AddBacket(props: any) {
     const saveToBucket = (e: Number) => {
         const orderProduct = {
@@ -29,7 +28,6 @@ export default function AddBacket(props: any) {
             }
             localStorage.setItem("products", JSON.stringify(a))
         }
-        console.log(localStorage.getItem("products"))
     }
     return (
         <Container fluid id={styles.add_to_backet}>
