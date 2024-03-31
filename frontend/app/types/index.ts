@@ -7,3 +7,12 @@ type Order = {
         price: number,
     }
 }
+
+type Card = {
+    id: number
+    advantages: Array<string>
+    description: string
+    imageUrl: string
+    price: number
+    title: string
+}
