@@ -1,19 +1,23 @@
 "use client";
+import { setState } from '@/lib/features/backetSlice';
 import { useState } from 'react';
 import { Form, InputGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useDispatch } from 'react-redux';
 
 export default function ModalCheckout(props: any) {
   const {set, ...other} = props
   const [phone, setPhone] = useState("")
   const [name, setName] = useState("")
+  const dispatch = useDispatch()
 
   const checkout = () => {
     props.onHide()
     setPhone("")
     setName("")
     localStorage.clear()
+    dispatch(setState(0))
     props.set([])
   }
 
