@@ -12,27 +12,7 @@ class Advantage(models.Model):
         verbose_name_plural = 'Преимущества'
 
     def __str__(self) -> str:
-        return f'{self.title[:10]}...'
-
-
-class Product(models.Model):
-    title = models.CharField('Название товара', max_length=50)
-    description = models.TextField('Описание товара')
-    price = models.DecimalField(
-        'Цена', max_digits=10, decimal_places=2,
-        validators=[MinValueValidator(limit_value=Decimal(0.10))])
-    advantages = models.ManyToManyField(
-        'Advantage', verbose_name="Преимущества")
-    image = models.TextField('Фото')
-    category = models.ForeignKey(
-        'Category', verbose_name='Категория', on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = 'Товар'
-        verbose_name_plural = 'Товары'
-
-    def __str__(self) -> str:
-        return f'Товар: {self.title}'
+        return f'Преимущество {self.title[:10]}...'
 
 
 class Category(models.Model):
@@ -73,3 +53,38 @@ class ProductsInOrder(models.Model):
 
     def __str__(self) -> str:
         return f'{self.product}, количество - {self.count}'
+
+
+class ProductAdvantage(models.Model):
+    product = models.ForeignKey(
+        'Product', verbose_name='Товар', on_delete=models.CASCADE)
+    advantage = models.ForeignKey(
+        'Advantage', verbose_name='Преимущество', on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Преимущество товара'
+        verbose_name_plural = 'Преимущества товаров'
+        ordering = ('product',)
+
+    def __str__(self) -> str:
+        return f'{self.advantage}, {self.product}'
+
+
+class Product(models.Model):
+    title = models.CharField('Название товара', max_length=50)
+    description = models.TextField('Описание товара')
+    price = models.DecimalField(
+        'Цена', max_digits=10, decimal_places=2,
+        validators=[MinValueValidator(limit_value=Decimal(0.10))])
+    advantages = models.ManyToManyField(
+        'Advantage', verbose_name="Преимущества", through=ProductAdvantage)
+    image = models.TextField('Фото')
+    category = models.ForeignKey(
+        'Category', verbose_name='Категория', on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
+
+    def __str__(self) -> str:
+        return f'Товар: {self.title}'
