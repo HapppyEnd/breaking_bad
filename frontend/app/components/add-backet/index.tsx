@@ -2,21 +2,19 @@
 import { Col, Container, Row } from "react-bootstrap";
 import styles from "./index.module.css";
 
-
 export default function AddBacket(props: any) {
     const saveToBucket = (e: Number) => {
+        const orderProduct = {
+            id: e,
+            obj: {
+                image: props.children.imageUrl,
+                title: props.children.title,
+                price: props.children.price,
+            },
+            count: 1
+        }
         if (localStorage.getItem("products") == null) {
-            localStorage.setItem("products", JSON.stringify([
-                {
-                    id: e,
-                    obj: {
-                        image: props.children.imageUrl,
-                        title: props.children.title,
-                        price: props.children.price,
-                    },
-                    count: 1
-                },
-            ]))
+            localStorage.setItem("products", JSON.stringify([orderProduct]))
         }
         else {
             let a = JSON.parse(localStorage.getItem("products")!)
@@ -26,21 +24,10 @@ export default function AddBacket(props: any) {
                 product["count"] += 1
             }
             else {
-                a.push(
-                    {
-                        id: e,
-                        obj: {
-                            image: props.children.imageUrl,
-                            title: props.children.title,
-                            price: props.children.price,
-                        },
-                        count: 1
-                    },
-                )
+                a.push(orderProduct)
             }
             localStorage.setItem("products", JSON.stringify(a))
         }
-        console.log(localStorage.getItem("products"))
     }
     return (
         <Container fluid id={styles.add_to_backet}>
@@ -58,7 +45,7 @@ export default function AddBacket(props: any) {
                     </div>
                     <button
                         id={styles.add_button}
-                        onClick={ _ => saveToBucket(props.children.id)}
+                        onClick={_ => saveToBucket(props.children.id)}
                     >В КОРЗИНУ</button>
                 </Col>
             </Row>

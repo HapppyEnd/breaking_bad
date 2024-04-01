@@ -11,7 +11,7 @@ export default function CardId(props: any) {
             <Row>
                 <Col md id={styles.imgCard}>
                     <Image
-                        //src={`/${product?.imageUrl}`}
+                        src={`/${product?.imageUrl}`}
                         className="h-full m-auto" />
                 </Col>
                 <Col className="shadow-xl p-4">

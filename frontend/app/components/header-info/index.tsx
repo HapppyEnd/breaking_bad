@@ -1,5 +1,6 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
 import styles from "./index.module.css"
+import RedirectToShop from "./button";
 
 export default function HeaderInfo() {
     return (
@@ -20,12 +21,7 @@ export default function HeaderInfo() {
             </Row>
             <Row>
                 <Col>
-                    <Button
-                        href="/shop"
-                        id={styles.buttonRedirectShop}
-                        className="pt-3">
-                            Купить сейчас
-                    </Button>
+                    <RedirectToShop />
                 </Col>
             </Row>
         </Container>

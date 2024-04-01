@@ -1,13 +1,26 @@
 "use client";
+import { useState } from 'react';
 import { Form, InputGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 export default function ModalCheckout(props: any) {
+  const {set, ...other} = props
+  const [phone, setPhone] = useState("")
+  const [name, setName] = useState("")
+
+  const checkout = () => {
+    props.onHide()
+    setPhone("")
+    setName("")
+    localStorage.clear()
+    props.set([])
+  }
+
   return (
     <>
       <Modal
-        {...props}
+        {...other}
         size="md"
         aria-labelledby="contained-modal-title-vcenter"
         centered
@@ -27,6 +40,8 @@ export default function ModalCheckout(props: any) {
             type="text"
             id="inputPassword5"
             aria-describedby="passwordHelpBlock"
+            onChange={(e) => setPhone(e.target.value)}
+            value={phone}
           />
           <Form.Text id="passwordHelpBlock" muted>
             Введите номер телефона
@@ -40,13 +55,15 @@ export default function ModalCheckout(props: any) {
             type="text"
             id="inputPassword5"
             aria-describedby="passwordHelpBlock"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
           />
           <Form.Text id="passwordHelpBlock" muted>
             Введите Ваше имя
           </Form.Text>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Оформить</Button>
+        <Button onClick={checkout}>Оформить</Button>
       </Modal.Footer>
     </Modal >
     </>
