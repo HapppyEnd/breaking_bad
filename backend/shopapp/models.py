@@ -78,7 +78,8 @@ class Product(models.Model):
         validators=[MinValueValidator(limit_value=Decimal(0.10))])
     advantages = models.ManyToManyField(
         'Advantage', verbose_name="Преимущества", through=ProductAdvantage)
-    image = models.TextField('Фото')
+    image = models.ImageField(
+        'Product image', upload_to='products/', blank=True, null=True)
     category = models.ForeignKey(
         'Category', verbose_name='Категория', on_delete=models.CASCADE)
 

@@ -1,6 +1,6 @@
 export default async function getAllProducts() {
     const products = await fetch('http://localhost:8000/api/products/', {
-        cache: 'force-cache',
+        cache: 'no-cache',
         method: 'GET',
         headers: {
             'Accept': 'application/json',
