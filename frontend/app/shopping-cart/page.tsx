@@ -6,10 +6,22 @@ import styles from "@/app/components/header-info/index.module.css";
 import Link from "next/link";
 import style from "./page.module.css";
 import ModalCheckout from "../components/model-checkout";
+import { useDispatch, useSelector } from "react-redux";
+import { setState } from "@/lib/features/backetSlice";
 
 export default function ShoppingCart() {
     const [order, setOrder] = useState<[Order] | []>([])
     const [modalShow, setModalShow] = useState(false)
+
+    const count = useSelector((state: any) => state.backet)
+    const dispatch = useDispatch()
+    console.log(count)
+
+    const deleteFromBacket = (id: number) => {
+        setOrder(deleteProduct(id))
+        dispatch(setState(order.length - 1))
+        console.log("del")
+    }
 
     useEffect(() => {
         if (typeof localStorage !== 'undefined') {
@@ -17,11 +29,6 @@ export default function ShoppingCart() {
         }
     }, [])
 
-    const checkout = () => {
-        alert("checkout")
-        localStorage.clear()
-        setOrder([])
-    }
     return (
         <Container className="pt-24 min-h-f-min">
             <Row className="align-middle text-center mt-3">
@@ -56,8 +63,7 @@ export default function ShoppingCart() {
                                     <button
                                         id={style.btn_delete}
                                         onClick={
-                                            () => setOrder(
-                                                deleteProduct(id))}>
+                                            () => deleteFromBacket(id)}>
                                         Удалить
                                     </button>
                                 </td>

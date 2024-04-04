@@ -1,8 +1,12 @@
 "use client";
 import { Col, Container, Row } from "react-bootstrap";
 import styles from "./index.module.css";
+import { useDispatch } from "react-redux";
+import { setState } from "@/lib/features/backetSlice";
+import { useState } from "react";
 
 export default function AddBacket(props: any) {
+    const dispatch = useDispatch()
     const saveToBucket = (e: Number) => {
         const orderProduct = {
             id: e,
@@ -15,16 +19,17 @@ export default function AddBacket(props: any) {
         }
         if (localStorage.getItem("products") == null) {
             localStorage.setItem("products", JSON.stringify([orderProduct]))
+            dispatch(setState(1))
         }
         else {
             let a = JSON.parse(localStorage.getItem("products")!)
-            console.log(a)
             const product = a.find((product: any) => product.id == e)
             if (product) {
                 product["count"] += 1
             }
             else {
                 a.push(orderProduct)
+                dispatch(setState(a.length))
             }
             localStorage.setItem("products", JSON.stringify(a))
         }

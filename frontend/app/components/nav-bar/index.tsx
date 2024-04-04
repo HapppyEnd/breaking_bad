@@ -4,9 +4,13 @@ import styles from "./index.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Badge } from "@nextui-org/badge";
 
 export default function NavBAr() {
     const router = useRouter()
+    const count = useSelector((state: any) => state.backet)
+    // console.log(count.backet.backet)
 
     return (
         <Navbar bg="light" expand="sm" id={styles.navbar} className="shadow-md">
@@ -30,15 +34,17 @@ export default function NavBAr() {
                     </Nav>
                 </Navbar.Collapse>
                 <Nav>
-                    <Link href="/shopping-cart">
-                        <img
-                            src="/images/navbar/shoping-bag.png"
-                            width="30"
-                            height="30"
-                            className="d-inline-block align-top ms-3"
-                            alt="shoping bag icons"
-                        />
-                    </Link>
+                    <Badge content={count.backet} color="danger">
+                        <Link href="/shopping-cart">
+                            <img
+                                src="/images/navbar/shoping-bag.png"
+                                width="30"
+                                height="30"
+                                className="d-inline-block align-top ms-3"
+                                alt="shoping bag icons"
+                            />
+                        </Link>
+                    </Badge>
                 </Nav>
             </Container>
         </Navbar>
