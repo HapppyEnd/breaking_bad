@@ -4,8 +4,7 @@ import "./globals.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from "./components/footer";
 import NavBar from "./components/nav-bar";
-import StoreProvider from "./StoreProvider";
-import { NextUIProvider } from "@nextui-org/react";
+import StoreProvider from "./StoreProvider"
 
 
 const inter = Montserrat({ subsets: ["latin"] });
@@ -23,10 +22,10 @@ export default function RootLayout({
   return (
     <html lang="rus">
       <body className={inter.className}>
-          <StoreProvider>
+        <StoreProvider>
             <NavBar />{children}<Footer />
-          </StoreProvider>
-    </body>
+        </StoreProvider>
+      </body>
     </html >
   );
 }

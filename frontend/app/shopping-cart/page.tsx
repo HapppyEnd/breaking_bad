@@ -7,7 +7,6 @@ import Link from "next/link";
 import style from "./page.module.css";
 import ModalCheckout from "../components/model-checkout";
 import { useDispatch, useSelector } from "react-redux";
-import { useAppDispatch } from "@/lib/hooks";
 import { setState } from "@/lib/features/backetSlice";
 
 export default function ShoppingCart() {

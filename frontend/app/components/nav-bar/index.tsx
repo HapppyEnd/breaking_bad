@@ -10,6 +10,7 @@ import { Badge } from "@nextui-org/badge";
 export default function NavBAr() {
     const router = useRouter()
     const count = useSelector((state: any) => state.backet)
+    // console.log(count.backet.backet)
 
     return (
         <Navbar bg="light" expand="sm" id={styles.navbar} className="shadow-md">
@@ -33,7 +34,7 @@ export default function NavBAr() {
                     </Nav>
                 </Navbar.Collapse>
                 <Nav>
-                    <Badge content={ count.count } color="danger">
+                    <Badge content={count.backet} color="danger">
                         <Link href="/shopping-cart">
                             <img
                                 src="/images/navbar/shoping-bag.png"
