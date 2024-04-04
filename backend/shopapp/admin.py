@@ -17,12 +17,16 @@ class ProductInLine(admin.TabularInline):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('name', 'created')
+    ordering = ('-created',)
+    search_fields = ('name',)
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('title', 'price',)
+    list_display = ('title', 'price', 'category')
     inlines = [ProductInLine,]
+    list_filter = ('price', 'category',)
+    ordering = ('title', 'price', 'category',)
 
 
 @admin.register(ProductsInOrder)

@@ -24,7 +24,7 @@ class Category(models.Model):
         verbose_name_plural = 'Категории'
 
     def __str__(self) -> str:
-        return f'Категория: {self.title}'
+        return self.title
 
 
 class Order(models.Model):
