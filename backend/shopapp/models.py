@@ -10,6 +10,7 @@ class Advantage(models.Model):
     class Meta:
         verbose_name = 'Преимущество'
         verbose_name_plural = 'Преимущества'
+        ordering = ('title',)
 
     def __str__(self) -> str:
         return f'Преимущество {self.title[:10]}...'
@@ -22,6 +23,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+        ordering = ('title',)
 
     def __str__(self) -> str:
         return self.title
@@ -36,6 +38,7 @@ class Order(models.Model):
     class Meta:
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
+        ordering = ('-created',)
 
     def __str__(self) -> str:
         return (f'Заказ номер: {self.pk}. Имя: {self.name}, '
@@ -50,6 +53,7 @@ class ProductsInOrder(models.Model):
     class Meta:
         verbose_name = 'Заказанный товар'
         verbose_name_plural = 'Заказанные товары'
+        ordering = ('product',)
 
     def __str__(self) -> str:
         return f'{self.product}, количество - {self.count}'
@@ -86,6 +90,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
+        ordering = ('title',)
 
     def __str__(self) -> str:
         return f'Товар: {self.title}'

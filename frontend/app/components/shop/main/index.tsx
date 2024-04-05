@@ -5,7 +5,7 @@ import Sorted from "@/app/components/sorted";
 import ShopCard from "@/app/components/shop/card";
 import { useRouter } from "next/navigation";
 
-export default function MainShop(props: {children: Array<Card> }) {
+export default function MainShop(props: {children: { results: Array<Card>} }) {
     const router = useRouter()
     const products = props.children
     return (
@@ -24,7 +24,7 @@ export default function MainShop(props: {children: Array<Card> }) {
                         </Col>
                     </Row>
                     <Row className="mt-5">
-                        {products.map((card: Card) => (
+                        {products.results.map((card: Card) => (
                             <Col xs={12} md={8} lg={6} xl={4} 
                             key={card.id} className="m-auto pb-12"
                             onClick={() => router.push(`/shop/${card.id}`)}>

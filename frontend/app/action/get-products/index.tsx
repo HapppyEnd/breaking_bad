@@ -7,5 +7,7 @@ export default async function getAllProducts() {
             'Content-Type': 'application/json',
         }
     });
-    return products.json()
+    const a = products.json()
+    console.log(a)
+    return a
 }
