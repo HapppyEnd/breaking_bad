@@ -1,4 +1,5 @@
 "use client";
+import createOrder from '@/app/action/create-order';
 import { setState } from '@/lib/features/backetSlice';
 import { useState } from 'react';
 import { Form, InputGroup } from 'react-bootstrap';
@@ -7,12 +8,15 @@ import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
 
 export default function ModalCheckout(props: any) {
-  const {set, ...other} = props
+  const {set, order, ...other} = props
   const [phone, setPhone] = useState("")
   const [name, setName] = useState("")
   const dispatch = useDispatch()
 
+  console.log(order)
+
   const checkout = () => {
+    createOrder(name, phone, order)
     props.onHide()
     setPhone("")
     setName("")
