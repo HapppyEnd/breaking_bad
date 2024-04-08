@@ -14,17 +14,24 @@ class ProductInLine(admin.TabularInline):
     extra = 1
 
 
+class OrderInLine(admin.TabularInline):
+    model = ProductsInOrder
+    min_num = 1
+    extra = 1
+
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('name', 'created')
     ordering = ('-created',)
     search_fields = ('name',)
+    inlines = [OrderInLine, ]
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('title', 'price', 'category')
-    inlines = [ProductInLine,]
+    inlines = [ProductInLine]
     list_filter = ('price', 'category',)
     ordering = ('title', 'price', 'category',)
 

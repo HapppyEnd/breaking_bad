@@ -18,7 +18,7 @@ class Advantage(models.Model):
 
 class Category(models.Model):
     title = models.CharField('Категория', max_length=50)
-    description = models.TextField()
+    description = models.TextField('Описание')
 
     class Meta:
         verbose_name = 'Категория'
@@ -32,7 +32,8 @@ class Category(models.Model):
 class Order(models.Model):
     phone_number = models.SmallIntegerField('Номер телефона')
     name = models.CharField('Имя', max_length=50)
-    products = models.ManyToManyField('ProductsInOrder', verbose_name='Товары')
+    products = models.ManyToManyField(
+        'Product', verbose_name='Товары', through='ProductsInOrder')
     created = models.DateTimeField('Дата создания', auto_now_add=True)
 
     class Meta:
@@ -46,6 +47,8 @@ class Order(models.Model):
 
 
 class ProductsInOrder(models.Model):
+    order = models.ForeignKey(
+        'Order', verbose_name='Заказ', on_delete=models.CASCADE)
     product = models.ForeignKey(
         'Product', verbose_name='Товар', on_delete=models.CASCADE)
     count = models.IntegerField('Количество товаров')
@@ -54,6 +57,7 @@ class ProductsInOrder(models.Model):
         verbose_name = 'Заказанный товар'
         verbose_name_plural = 'Заказанные товары'
         ordering = ('product',)
+        default_related_name = 'inOrder'
 
     def __str__(self) -> str:
         return f'{self.product}, количество - {self.count}'
@@ -91,6 +95,7 @@ class Product(models.Model):
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
         ordering = ('title',)
+        default_related_name = 'products'
 
     def __str__(self) -> str:
         return f'Товар: {self.title}'
