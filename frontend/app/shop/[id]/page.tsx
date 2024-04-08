@@ -1,17 +1,17 @@
 "use client";
 import { Col, Container, Row, Image } from "react-bootstrap";
 import styles from "./page.module.css";
-import { products } from "@/app/db";
 import AddBacket from "@/app/components/add-backet";
+import getAllProducts from "@/app/action/get-products";
 
-export default function CardId(props: any) {
-    const product = products.find((e) => e.id == props.params.id)
+export default async function CardId(props: any) {
+    const product = await getAllProducts('products', props.params.id)
     return (
         <Container fluid className="pt-24 min-h-screen">
             <Row>
                 <Col md id={styles.imgCard}>
                     <Image
-                        src={`/${product?.imageUrl}`}
+                        src={product?.image}
                         className="h-full m-auto" />
                 </Col>
                 <Col className="shadow-xl p-4">
@@ -22,7 +22,8 @@ export default function CardId(props: any) {
                     </Row>
                     <Row>
                         <ul>
-                            {product?.advantages.map((advantage, index) => (
+                            {product?.advantages.map(
+                                    (advantage: Array<string>, index: number) => (
                                 <li key={index} id={styles.liContent}>
                                     {advantage}
                                 </li>
