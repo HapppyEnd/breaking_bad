@@ -6,7 +6,7 @@ from shopapp.models import Order, Product, ProductsInOrder
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ('title', 'description', 'price',
+        fields = ('id', 'title', 'description', 'price',
                   'advantages', 'image', 'category')
 
 
