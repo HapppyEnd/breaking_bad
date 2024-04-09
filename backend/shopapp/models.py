@@ -42,8 +42,8 @@ class Order(models.Model):
         ordering = ('-created',)
 
     def __str__(self) -> str:
-        return (f'Заказ номер: {self.pk}. Имя: {self.name}, '
-                f'создан: {self.created}')
+        return (f'Заказ номер: {self.pk}. Клиент: {self.name}. '
+                f'Создан: {self.created}')
 
 
 class ProductsInOrder(models.Model):
@@ -51,13 +51,13 @@ class ProductsInOrder(models.Model):
         'Order', verbose_name='Заказ', on_delete=models.CASCADE)
     product = models.ForeignKey(
         'Product', verbose_name='Товар', on_delete=models.CASCADE)
-    count = models.IntegerField('Количество товаров')
+    count = models.IntegerField('Количество')
 
     class Meta:
         verbose_name = 'Заказанный товар'
         verbose_name_plural = 'Заказанные товары'
         ordering = ('product',)
-        default_related_name = 'inOrder'
+        default_related_name = 'in_order'
 
     def __str__(self) -> str:
         return f'{self.product}, количество - {self.count}'
@@ -79,15 +79,15 @@ class ProductAdvantage(models.Model):
 
 
 class Product(models.Model):
-    title = models.CharField('Название товара', max_length=50)
-    description = models.TextField('Описание товара')
+    title = models.CharField('Название', max_length=50)
+    description = models.TextField('Описание')
     price = models.DecimalField(
         'Цена', max_digits=10, decimal_places=2,
         validators=[MinValueValidator(limit_value=Decimal(0.10))])
     advantages = models.ManyToManyField(
-        'Advantage', verbose_name="Преимущества", through=ProductAdvantage)
+        'Advantage', verbose_name='Преимущества', through=ProductAdvantage)
     image = models.ImageField(
-        'Product image', upload_to='products/', blank=True, null=True)
+        'Изображение', upload_to='products/', blank=True, null=True)
     category = models.ForeignKey(
         'Category', verbose_name='Категория', on_delete=models.CASCADE)
 
@@ -95,7 +95,7 @@ class Product(models.Model):
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
         ordering = ('title',)
-        default_related_name = 'products'
+        default_related_name = 'product'
 
     def __str__(self) -> str:
-        return f'Товар: {self.title}'
+        return self.title
