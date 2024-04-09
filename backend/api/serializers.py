@@ -6,7 +6,8 @@ from shopapp.models import Order, Product, ProductsInOrder
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ('title', 'description', 'price',
+                  'advantages', 'image', 'category')
 
 
 class OrderProductSerializer(serializers.ModelSerializer):
@@ -28,7 +29,7 @@ class ShowProductSerializer(serializers.ModelSerializer):
 
 class OrderSerializer(serializers.ModelSerializer):
     products = ShowProductSerializer(
-        many=True, read_only=True, source='inOrder')
+        many=True, read_only=True, source='in_order')
 
     class Meta:
         model = Order
@@ -46,10 +47,10 @@ class CreateOrderSerializer(serializers.ModelSerializer):
     def create_products(order, products):
         ProductsInOrder.objects.bulk_create(
             ProductsInOrder(
-                count=i['count'],
+                count=product['count'],
                 order=order,
-                product=Product.objects.get(pk=i['id'])
-            )for i in products
+                product=Product.objects.get(pk=product['id'])
+            )for product in products
         )
 
     def create(self, validated_data):

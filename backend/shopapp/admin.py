@@ -25,13 +25,13 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = ('name', 'created')
     ordering = ('-created',)
     search_fields = ('name',)
-    inlines = [OrderInLine, ]
+    inlines = [OrderInLine,]
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('title', 'price', 'category')
-    inlines = [ProductInLine]
+    inlines = [ProductInLine,]
     list_filter = ('price', 'category',)
     ordering = ('title', 'price', 'category',)
 
