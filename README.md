@@ -5,6 +5,11 @@
 Разработать сайт интернет-магазина. 
 
 
+## Используемые технологии
+- Django 4.2 и Django REST Framework
+- PostgreSQL
+- Docker и Docker Compose
+
 ## Документация по проекту
 
 Для запуска проекта необходимо:
@@ -18,3 +23,4 @@ pip install -r requirements.txt
 ```bash
 python manage.py runserver
 ```
+
