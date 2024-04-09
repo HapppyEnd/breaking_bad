@@ -13,14 +13,11 @@ export default function ShoppingCart() {
     const [order, setOrder] = useState<[Order] | []>([])
     const [modalShow, setModalShow] = useState(false)
 
-    const count = useSelector((state: any) => state.backet)
     const dispatch = useDispatch()
-    console.log(count)
 
     const deleteFromBacket = (id: number) => {
         setOrder(deleteProduct(id))
         dispatch(setState(order.length - 1))
-        console.log("del")
     }
 
     useEffect(() => {

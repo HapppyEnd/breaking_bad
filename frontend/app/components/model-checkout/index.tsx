@@ -40,6 +40,7 @@ export default function ModalCheckout(props: any) {
         </Modal.Header>
         <Modal.Body className='m-auto'>
           <h3>Заполните поля</h3>
+          <Form>
           <Form.Label htmlFor="inputPassword5">
             Телефон
             <span className='text-red-900'>*</span>
@@ -50,6 +51,7 @@ export default function ModalCheckout(props: any) {
             aria-describedby="passwordHelpBlock"
             onChange={(e) => setPhone(e.target.value)}
             value={phone}
+            required
           />
           <Form.Text id="passwordHelpBlock" muted>
             Введите номер телефона
@@ -65,10 +67,13 @@ export default function ModalCheckout(props: any) {
             aria-describedby="passwordHelpBlock"
             onChange={(e) => setName(e.target.value)}
             value={name}
+            required
           />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Text id="passwordHelpBlock" muted>
             Введите Ваше имя
           </Form.Text>
+          </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={checkout}>Оформить</Button>

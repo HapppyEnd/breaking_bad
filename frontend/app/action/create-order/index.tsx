@@ -1,7 +1,14 @@
-import { BASE_URL } from "@/lib/settings"
+import { BASE_URL } from '@/lib/settings'
 
 export default async function createOrder(
     name: string, phone_number: string, order : Array<number>) {
+    console.log('order', order)
+    const idCount = order.map((row:any) => {
+        return {
+            id: row.id,
+            count: row.count
+        }
+    })
     const query = await fetch(`${BASE_URL}/order/`, {
         method: 'POST',
         headers: {
@@ -11,9 +18,11 @@ export default async function createOrder(
         body: JSON.stringify({
             name: name,
             phone_number: phone_number,
-            products: [1]
+            products: idCount
         })
     })
 
-    return 'aa '
+    if (!query.ok) {
+        console.log(query.json().then(e => console.log(e)))
+    }
 }
