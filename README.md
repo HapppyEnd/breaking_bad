@@ -6,9 +6,17 @@
 
 
 ## Используемые технологии
+1. Backend
 - Django 4.2 и Django REST Framework
+
+2. Frontend
+- Node.js
+- Next.js
+- React Bootstrap
+- Redux
+3. БД
 - PostgreSQL
-- Docker и Docker Compose
+4. Docker и Docker Compose
 
 ## Документация по проекту
 
