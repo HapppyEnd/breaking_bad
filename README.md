@@ -12,8 +12,11 @@
 
 ## Документация по проекту
 
-Для запуска проекта необходимо:
-
+1. Для запуска backend необходимо:
+* Перейти в папку backend:
+```bash
+cd backend
+```
 * Установить зависимости:
 ```bash
 pip install -r requirements.txt
@@ -23,4 +26,16 @@ pip install -r requirements.txt
 ```bash
 python manage.py runserver
 ```
-
+2. Для запуска frontend необходимо:
+* Перейти в папку frontend:
+```bash
+cd frontend:
+```
+* Установить зависимости:
+```bash
+npm i
+```
+* Команда для запуска приложения
+```bash
+npm run dev
+```
