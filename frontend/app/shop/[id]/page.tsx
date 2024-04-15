@@ -33,7 +33,7 @@ export default async function CardId(props: any) {
                     </Row>
                     <Row>
                         <span className="font-semibold text-2xl py-12">
-                            Цена: {product?.price} р.
+                            Цена: {Math.ceil(product?.price)} р.
                         </span>
                     </Row>
                 </Col>

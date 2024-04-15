@@ -24,5 +24,8 @@ export default async function createOrder(
 
     if (!query.ok) {
         console.log(query.json().then(e => console.log(e)))
+        console.log('not ok')
+        return await query.json().then()
     }
+    return true
 }

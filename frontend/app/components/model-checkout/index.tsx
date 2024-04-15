@@ -9,20 +9,33 @@ import { useDispatch } from 'react-redux';
 
 export default function ModalCheckout(props: any) {
   const {set, order, ...other} = props
-  const [phone, setPhone] = useState("")
-  const [name, setName] = useState("")
+  const [phone, setPhone] = useState('')
+  const [name, setName] = useState('')
+  const [nameHelp, setNameHelp] = useState(true)
+  const [phoneHelp, setPhoneHelp] = useState(true)
   const dispatch = useDispatch()
 
-  console.log(order)
-
   const checkout = () => {
-    createOrder(name, phone, order)
-    props.onHide()
-    setPhone("")
-    setName("")
-    localStorage.clear()
-    dispatch(setState(0))
-    props.set([])
+    const error = createOrder(name, phone, order)
+    console.log(error)
+    if (error) {
+      error.then(e => {
+        if (e.phone_number) {
+          setPhoneHelp(false)
+        }
+        if (e.name) {
+          setNameHelp(false)
+          console.log('name')
+        }
+      })
+    } else {
+      props.onHide()
+      setPhone("")
+      setName("")
+      localStorage.clear()
+      dispatch(setState(0))
+      props.set([])
+    }
   }
 
   return (
@@ -54,7 +67,11 @@ export default function ModalCheckout(props: any) {
             required
           />
           <Form.Text id="passwordHelpBlock" muted>
-            Введите номер телефона
+            {phoneHelp 
+              ? 'Введите номер телефона' 
+              : <span className='text-red-600'>
+                  Введен не корректнный номер
+                </span>} 
           </Form.Text>
           <div></div>
           <Form.Label htmlFor="inputPassword5" className='mt-1'>
@@ -71,7 +88,12 @@ export default function ModalCheckout(props: any) {
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Text id="passwordHelpBlock" muted>
-            Введите Ваше имя
+            {phoneHelp 
+              ? 'Введите имя' 
+              : <span className='text-red-600'>
+                  Введено не корректнное имя
+                </span>
+            } 
           </Form.Text>
           </Form>
       </Modal.Body>

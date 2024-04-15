@@ -13,7 +13,7 @@ export default function ShopCard(props: any) {
                     { props.children.description}
                 </Card.Text>
                 <Card.Text>
-                    Цена: {props.children.price}р.
+                    Цена: {Math.ceil(props.children.price)}р.
                 </Card.Text>
             </Card.Body>
         </Card>

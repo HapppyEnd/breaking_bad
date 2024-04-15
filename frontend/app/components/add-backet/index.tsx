@@ -41,11 +41,11 @@ export default function AddBacket(props: any) {
                     <div id={styles.add_to_backet_price} className="pt-3">
                         <span className="text-nowrap min-w-48">Цена сегодня:&nbsp;&nbsp;</span>
                         <span className="line-through text-3xl text-slate-300">
-                            {props.children.price}
+                            {Math.ceil(props.children.price)}
                         </span>
                         &nbsp;&nbsp;&nbsp;
                         <span className="text-3xl">
-                            {props.children.price * 0.8}р.
+                            {Math.ceil(props.children.price * 0.8)}р.
                         </span>
                     </div>
                     <button
