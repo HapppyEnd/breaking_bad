@@ -15,10 +15,11 @@ class ProductViewSet(viewsets.ModelViewSet):
     ordering_fields = ('title', 'price',)
 
     def get_queryset(self):
-        if 'sales_number' in (params := self.request.GET.get('ordering')):
-            return Product.objects.all().annotate(
-                sales_number=Count('in_order__product')
-                ).order_by(params)
+        if params := self.request.GET.get('ordering'):
+            if 'sales_number' in (params):
+                return Product.objects.all().annotate(
+                    sales_number=Count('in_order__product')
+                    ).order_by(params)
         return super().get_queryset()
 
 
