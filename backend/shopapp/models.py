@@ -94,7 +94,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
-        ordering = ('title',)
+        ordering = ('title', '-title')
         default_related_name = 'product'
 
     def __str__(self) -> str:
