@@ -18,24 +18,27 @@ export default function ModalCheckout(props: any) {
   const checkout = () => {
     const error = createOrder(name, phone, order)
     console.log(error)
-    if (error) {
-      error.then(e => {
-        if (e.phone_number) {
-          setPhoneHelp(false)
+    error.then(e => {
+        if (e) {
+          console.log(e)
+          if (e.phone_number) {
+            setPhoneHelp(false)
+          }
+          if (e.name) {
+            setNameHelp(false)
+          }
+        } else {
+          console.log('fafa')
+          props.onHide()
+          setPhone("")
+          setPhoneHelp(true)
+          setName("")
+          setNameHelp(true)
+          localStorage.clear()
+          dispatch(setState(0))
+          props.set([])
         }
-        if (e.name) {
-          setNameHelp(false)
-          console.log('name')
-        }
-      })
-    } else {
-      props.onHide()
-      setPhone("")
-      setName("")
-      localStorage.clear()
-      dispatch(setState(0))
-      props.set([])
-    }
+    })
   }
 
   return (
@@ -88,7 +91,7 @@ export default function ModalCheckout(props: any) {
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Text id="passwordHelpBlock" muted>
-            {phoneHelp 
+            {nameHelp 
               ? 'Введите имя' 
               : <span className='text-red-600'>
                   Введено не корректнное имя
