@@ -36,11 +36,6 @@ class ProductAdmin(admin.ModelAdmin):
     ordering = ('title', 'price', 'category',)
 
 
-@admin.register(ProductsInOrder)
-class ProductsInOrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'count',)
-
-
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('title',)

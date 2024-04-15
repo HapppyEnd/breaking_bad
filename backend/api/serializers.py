@@ -4,6 +4,8 @@ from shopapp.models import Order, Product, ProductsInOrder
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    advantages = serializers.StringRelatedField(many=True, read_only=True)
+
     class Meta:
         model = Product
         fields = ('id', 'title', 'description', 'price',

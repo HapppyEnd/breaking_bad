@@ -13,7 +13,7 @@ class Advantage(models.Model):
         ordering = ('title',)
 
     def __str__(self) -> str:
-        return f'Преимущество {self.title[:10]}...'
+        return f'{self.title}'
 
 
 class Category(models.Model):
