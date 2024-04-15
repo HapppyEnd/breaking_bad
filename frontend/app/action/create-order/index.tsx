@@ -22,10 +22,12 @@ export default async function createOrder(
         })
     })
 
+    console.log(query.status)
+
     if (!query.ok) {
-        console.log(query.json().then(e => console.log(e)))
+        //console.log(query.json().then(e => console.log(e)))
         console.log('not ok')
         return await query.json().then()
     }
-    return true
+    return false
 }
