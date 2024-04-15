@@ -40,6 +40,7 @@ class Order(models.Model):
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
         ordering = ('-created',)
+        default_related_name = 'orders'
 
     def __str__(self) -> str:
         return (f'Заказ номер: {self.pk}. Клиент: {self.name}. '
@@ -94,7 +95,6 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
-        ordering = ('title', '-title')
         default_related_name = 'product'
 
     def __str__(self) -> str:

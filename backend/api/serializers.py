@@ -5,11 +5,15 @@ from shopapp.models import Order, Product, ProductsInOrder
 
 class ProductSerializer(serializers.ModelSerializer):
     advantages = serializers.StringRelatedField(many=True, read_only=True)
+    sales_number = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
         fields = ('id', 'title', 'description', 'price',
-                  'advantages', 'image', 'category')
+                  'advantages', 'image', 'category', 'sales_number')
+
+    def get_sales_number(self, data):
+        return Order.objects.filter(products__pk=data.pk).count()
 
 
 class OrderProductSerializer(serializers.ModelSerializer):
@@ -18,7 +22,7 @@ class OrderProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProductsInOrder
-        fields = ('id', 'count')
+        fields = ('id', 'count',)
 
 
 class ShowProductSerializer(serializers.ModelSerializer):
