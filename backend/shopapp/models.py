@@ -96,7 +96,7 @@ class Product(models.Model):
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
         default_related_name = 'product'
-        ordering = ('-id',)
+        ordering = ('-id', )
 
     def __str__(self) -> str:
         return self.title
