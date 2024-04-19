@@ -1,4 +1,4 @@
-# Дипломный проект по курсу «Программист Python»:: Интернет-магазин на фреймворке Django
+# Разработка веб-сервиса и API для интернет магазина на основе фреймворка Django.
 
 ## Задача
 
@@ -46,4 +46,27 @@ npm i
 * Команда для запуска приложения
 ```bash
 npm run dev
+```
+* Запуск проекта с помощью docker compose
+1. клонировать репозиторий
+```bash
+git clone https://github.com/HapppyEnd/breaking_bad
+```
+2. Перейти в папку breaking_bad
+```bash
+cd breaking_bad
+```
+3. Запустить docker compose
+
+```bash
+docker compose up -d
+```
+```bash
+docker compose -f docker-compose.yml exec backend python manage.py migrate
+```
+```bash
+docker compose -f docker-compose.yml exec backend python manage.py collectstatic
+```
+```bash
+docker compose -f docker-compose.yml exec backend cp -r /app/static/. /app/backend_static/static/
 ```

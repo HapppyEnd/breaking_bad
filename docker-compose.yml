@@ -1,0 +1,25 @@
+
+version: '3.3'
+
+volumes:
+  static:
+  media:
+
+services:
+  backend:
+    build: backend
+    volumes:
+      - static:/app/backend_static
+      - media:/app/media
+  frontend:
+    depends_on:
+      - backend
+    build: ./frontend
+  nginx:
+    build: ./nginx
+    ports:
+      - "9000:80"
+    volumes:
+      - static:/static/
+      - media:/media/
+
