@@ -1,13 +1,14 @@
-# Разработка веб-сервиса и API для интернет магазина на основе фреймворка Django.
+# Разработка веб-сервиса и API для интернет-магазина на основе фреймворка Django.
 
 ## Задача
 
-Разработать сайт интернет-магазина. 
+Разработать API для интернет-магазина. 
 
 
 ## Используемые технологии
 1. Backend
-- Django 4.2 и Django REST Framework
+- Django 4.2
+- Django REST Framework
 
 2. Frontend
 - Node.js
@@ -16,7 +17,8 @@
 - Redux
 3. БД
 - PostgreSQL
-4. Docker и Docker Compose
+4. Docker
+5. Docker Compose
 
 ## Документация по проекту
 
