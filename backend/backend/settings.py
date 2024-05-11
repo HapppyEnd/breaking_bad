@@ -10,6 +10,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', default='KEY')
+
 DEBUG = bool(os.getenv('DEBUG', default=False) == 'True')
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default='*').split()
@@ -121,5 +122,4 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 9,
-
 }
