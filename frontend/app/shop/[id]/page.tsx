@@ -5,7 +5,7 @@ import AddBacket from "@/app/components/add-backet";
 import getAllProducts from "@/app/action/get-products";
 
 export default async function CardId(props: any) {
-    const product = await getAllProducts('products', props.params.id)
+    const product = await getAllProducts('products', props.params.id, { params: {}, searchParams: {}})
     return (
         <Container fluid className="pt-24 min-h-screen">
             <Row>

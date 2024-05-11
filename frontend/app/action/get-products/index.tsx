@@ -10,13 +10,18 @@ export default async function getAllProducts(
         for (const [key, value] of Object.entries(params.searchParams))
         searchParams += `${key}=${value}&`
     }
-    const products = await fetch(`${BASE_URL}/${url}/${id}${searchParams}`, {
-        cache: 'no-cache',
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        }
-    });
-    return products.json()
+    try {
+        const products = await fetch(`${BASE_URL}/${url}/${id}${searchParams}`, {
+            cache: 'no-cache',
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        });
+        return await products.json()
+
+    } catch (error) {
+        return null
+    }
 }
