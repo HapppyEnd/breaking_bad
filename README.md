@@ -49,16 +49,35 @@ npm i
 ```bash
 npm run dev
 ```
-* Запуск проекта с помощью docker compose
+## Запуск проекта с помощью docker compose
 1. клонировать репозиторий
 ```bash
 git clone https://github.com/HapppyEnd/breaking_bad
 ```
-2. Перейти в папку breaking_bad
+2. Создать файл .env
+```bash
+touch .env
+```
+Записать в файл переменные окружения:
+
+POSTGRES_DB=<имя БД>
+
+POSTGRES_USER=<имя пользователя>
+
+POSTGRES_PASSWORD=<пароль>
+
+DB_HOST=db
+
+DB_PORT=5432
+
+SECRET_KEY=<секретный ключ Django>
+
+
+3. Перейти в папку breaking_bad
 ```bash
 cd breaking_bad
 ```
-3. Запустить docker compose
+4. Запустить docker compose
 
 ```bash
 docker compose up -d
