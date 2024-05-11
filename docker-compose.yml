@@ -21,10 +21,11 @@ services:
       - static:/app/backend_static
       - media:/app/media
   frontend:
-    depends_on:
-      - backend
     build: ./frontend
   nginx:
+    depends_on:
+      - backend
+      - frontend
     build: ./nginx
     ports:
       - "9000:80"
