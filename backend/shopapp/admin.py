@@ -1,6 +1,15 @@
+from django import forms
 from django.contrib import admin
+from phonenumber_field.widgets import PhoneNumberPrefixWidget
 from shopapp.models import (Advantage, Category, Order, Product,
                             ProductAdvantage, ProductsInOrder)
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        widgets = {
+            'phone_number': PhoneNumberPrefixWidget(initial='RU'),
+        }
 
 
 @admin.register(Advantage)
@@ -22,6 +31,7 @@ class OrderInLine(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
+    form = ContactForm
     list_display = ('name', 'created')
     ordering = ('-created',)
     search_fields = ('name',)

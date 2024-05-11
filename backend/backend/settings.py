@@ -2,18 +2,17 @@
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 SECRET_KEY = os.getenv('SECRET_KEY', default='KEY')
+DEBUG = bool(os.getenv('DEBUG', default=False) == 'True')
 
-DEBUG = True
-
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-]
-
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default='*').split()
 
 INSTALLED_APPS = [
     'corsheaders',
@@ -27,6 +26,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'shopapp.apps.ShopappConfig',
     'api.apps.ApiConfig',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -111,14 +111,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [ 
-    'http://localhost:3000', 
-    'http://localhost:9000', 
-    'http://127.0.0.1:3000', 
-    'http://127.0.0.1:9000', 
-] 
- 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:9000',] 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:9000',
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:9000',
+]
+
+CSRF_TRUSTED_ORIGINS = ['http://localhost:9000',]
 
 CSRF_COOKIE_DOMAIN = 'localhost:9000'
 

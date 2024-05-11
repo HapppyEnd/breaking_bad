@@ -2,6 +2,7 @@ from decimal import Decimal
 
 from django.core.validators import MinValueValidator
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Advantage(models.Model):
@@ -30,7 +31,7 @@ class Category(models.Model):
 
 
 class Order(models.Model):
-    phone_number = models.IntegerField('Номер телефона')
+    phone_number = PhoneNumberField('Номер телефона', null=False, blank=False)
     name = models.CharField('Имя', max_length=50)
     products = models.ManyToManyField(
         'Product', verbose_name='Товары', through='ProductsInOrder')
