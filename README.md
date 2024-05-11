@@ -58,19 +58,19 @@ git clone https://github.com/HapppyEnd/breaking_bad
 ```bash
 touch .env
 ```
-Записать в файл переменные окружения:
+    Записать в файл переменные окружения:
 
-POSTGRES_DB=<имя БД>
+    POSTGRES_DB=<имя БД>
 
-POSTGRES_USER=<имя пользователя>
+    POSTGRES_USER=<имя пользователя>
 
-POSTGRES_PASSWORD=<пароль>
+    POSTGRES_PASSWORD=<пароль>
 
-DB_HOST=db
+    DB_HOST=db
 
-DB_PORT=5432
+    DB_PORT=5432
 
-SECRET_KEY=<секретный ключ Django>
+    SECRET_KEY=<секретный ключ Django>
 
 
 3. Перейти в папку breaking_bad
