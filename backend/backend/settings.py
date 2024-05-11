@@ -111,16 +111,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://localhost:9000',
-    'http://127.0.0.1:3000',
-    'http://127.0.0.1:9000',
-]
+CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', default='*').split()
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:9000',]
-
-CSRF_COOKIE_DOMAIN = 'localhost:9000'
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', default='*').split()
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
