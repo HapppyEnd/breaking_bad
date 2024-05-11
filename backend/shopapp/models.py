@@ -30,7 +30,7 @@ class Category(models.Model):
 
 
 class Order(models.Model):
-    phone_number = models.SmallIntegerField('Номер телефона')
+    phone_number = models.IntegerField('Номер телефона')
     name = models.CharField('Имя', max_length=50)
     products = models.ManyToManyField(
         'Product', verbose_name='Товары', through='ProductsInOrder')
