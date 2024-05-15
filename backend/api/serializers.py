@@ -10,7 +10,7 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ('id', 'title', 'description', 'price',
-                  'advantages', 'image', 'category', 'sales_number')
+                  'advantages', 'image', 'category', 'sales_number', )
 
     def get_sales_number(self, data):
         return Order.objects.filter(products__pk=data.pk).count()
@@ -22,7 +22,7 @@ class OrderProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProductsInOrder
-        fields = ('id', 'count',)
+        fields = ('id', 'count', )
 
 
 class ShowProductSerializer(serializers.ModelSerializer):
@@ -39,7 +39,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ('name', 'phone_number', 'products')
+        fields = ('name', 'phone_number', 'products', )
 
 
 class CreateOrderSerializer(serializers.ModelSerializer):
@@ -47,7 +47,7 @@ class CreateOrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ('name', 'phone_number', 'products')
+        fields = ('name', 'phone_number', 'products', )
 
     @staticmethod
     def create_products(order, products):
@@ -75,4 +75,4 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ('id', 'title', 'description',)
+        fields = ('id', 'title', 'description', )
