@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from shopapp.models import Order, Product, ProductsInOrder
+from shopapp.models import Category, Order, Product, ProductsInOrder
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -69,3 +69,10 @@ class CreateOrderSerializer(serializers.ModelSerializer):
         return OrderSerializer(
             instance,
             context={'request': self.context.get('request')}).data
+
+
+class CategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Category
+        fields = ('id', 'title', 'description',)
