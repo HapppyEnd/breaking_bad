@@ -48,7 +48,13 @@ export default function ShoppingCart() {
                     <tbody>
                         {order?.map(({ id, obj, count }) => (
                             <tr key={id}>
-                                <td className="min-w-40vw"><Image src={obj.image} width={"40vw"} className="min-w-12" /></td>
+                                <td className="min-w-40vw">
+                                    <Image 
+                                        src={obj.image} 
+                                        width={"40vw"} 
+                                        className="min-w-12"
+                                        alt={`${obj.title}`}/>
+                                </td>
                                 <td className="text-start">
                                     <Link href={`/shop/${id}`} id={style.product_title}>
                                         {obj.title}

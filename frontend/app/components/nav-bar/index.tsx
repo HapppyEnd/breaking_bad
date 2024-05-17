@@ -10,7 +10,6 @@ import { Badge } from "@nextui-org/badge";
 export default function NavBAr() {
     const router = useRouter()
     const count = useSelector((state: any) => state.backet)
-    // console.log(count.backet.backet)
 
     return (
         <Navbar bg="light" expand="sm" id={styles.navbar} className="shadow-md">

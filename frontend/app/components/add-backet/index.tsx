@@ -11,7 +11,7 @@ export default function AddBacket(props: any) {
         const orderProduct = {
             id: e,
             obj: {
-                image: props.children.imageUrl,
+                image: props.children.image,
                 title: props.children.title,
                 price: props.children.price,
             },

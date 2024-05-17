@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from shopapp.models import Order, Product, ProductsInOrder
+from shopapp.models import Category, Order, Product, ProductsInOrder
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -23,6 +23,12 @@ class OrderProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductsInOrder
         fields = ('id', 'count',)
+
+
+class CategoriesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ('id', 'title', )
 
 
 class ShowProductSerializer(serializers.ModelSerializer):

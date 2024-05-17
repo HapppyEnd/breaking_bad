@@ -1,9 +1,9 @@
-from api.serializers import (CreateOrderSerializer, OrderSerializer,
+from api.serializers import (CategoriesSerializer, CreateOrderSerializer, OrderSerializer,
                              ProductSerializer)
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, permissions, viewsets
 from rest_framework.permissions import AllowAny
-from shopapp.models import Order, Product
+from shopapp.models import Category, Order, Product
 from django.db.models import Count
 
 
@@ -31,3 +31,8 @@ class OrderViewSet(viewsets.ModelViewSet):
         if self.request.method in permissions.SAFE_METHODS:
             return OrderSerializer
         return CreateOrderSerializer
+
+
+class CategorieViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategoriesSerializer    
