@@ -9,7 +9,13 @@
     color: rgb(96, 249, 170);
 }
 
-#act {
+.act {
+    display: inline-block;
+    width: 30px;
+    height: 30px !important;
+    margin: 2px;
+    padding-top: 2px;
+    text-align: center;
     background-color: rgb(96, 249, 170);
     color: white;
 }

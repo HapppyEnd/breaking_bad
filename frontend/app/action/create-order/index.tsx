@@ -22,6 +22,13 @@ export default async function createOrder(
     }
     
     var csrftoken = readCookie('csrftoken');
+    const bo = JSON.stringify({
+        name: name,
+        phone_number: phone_number,
+        products: idCount
+    })
+
+    console.log(bo)
 
     const query = await fetch(`${BASE_URL}/order/`, {
         method: 'POST',
@@ -30,11 +37,7 @@ export default async function createOrder(
             'Content-Type': 'application/json',
             'X-CSRFToken': csrftoken!,
         },
-        body: JSON.stringify({
-            name: name,
-            phone_number: phone_number,
-            products: idCount
-        })
+        body: bo
     })
 
     console.log(query.status)

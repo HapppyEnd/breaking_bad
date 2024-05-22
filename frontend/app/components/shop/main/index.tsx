@@ -7,13 +7,12 @@ import { useRouter } from "next/navigation";
 
 export default function MainShop(props: any) {
     const router = useRouter()
-    const products = props.products
-    console.log('products', products)
+    const {products} = props
     return (
         <Container className="pt-32">
             <Row className="min-h-screen">
                 <Col md={4} lg={3}>
-                    <Category />
+                    <Category state={0}/>
                 </Col>
                 <Col md={8} lg={9} className="ps-5 pt-3">
                     <Row>

@@ -4,38 +4,29 @@ import { useEffect, useState } from "react";
 import getAllProducts from "@/app/action/get-products";
 import ErrorOrLoading from "../error-or-loading";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 interface Category {
     results: {
         id: number;
         title: string
-    } [];
+    }[];
 }
 
-export default function Category() {
+export default function Category(props: {state: number}) {
     const [categories, setCategories] = useState<Category | null>(null)
     const [loading, setLoading] = useState(false)
 
-    let searchParams = ''
-
-    for (const [key, value] of Array.from(new URLSearchParams(window.location.search))) {
-        if (key !== 'category') {
-            searchParams += `${key}=${value}&`
-        }
+    const fetchCategories = async () => {
+        setLoading(true)
+        const response = await getAllProducts('categories', '', undefined)
+        setCategories(response)
+        setLoading(false)
     }
 
+    
     useEffect(() => {
-        const fetchCategories = async () => {
-            setLoading(true)
-            console.log('fetchCategories=')
-            const response = await getAllProducts('categories', '', undefined)
-            console.log('fetchCategories=', response)
-            setCategories(response)
-            setLoading(false)
-        }
         fetchCategories();
-    }, [searchParams]);
+    }, []);
 
     if (loading) {
         return <ErrorOrLoading message={'Loading....'} />
@@ -48,9 +39,9 @@ export default function Category() {
     return (
         <Container className="bg-emerald-100 p-3">
             <Row>
-                <span className="text-xl font-black tracking-widest text-left ps-5">
+                <h2 className="text-xl font-black tracking-widest text-left ps-5">
                     Категории
-                </span>
+                </h2>
             </Row>
             <Row>
                 <Col>
@@ -58,7 +49,7 @@ export default function Category() {
                         <Row
                             key={category.id}
                             className="px-16 py-1 text-base font-medium tracking-widest">
-                            <Link href={`shop/?${searchParams}category=${category.id}`}>
+                            <Link href={`shop/?category=${category.id}`}>
                                 {category.title}
                             </Link>
                         </Row>

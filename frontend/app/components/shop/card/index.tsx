@@ -5,7 +5,7 @@ import styles from "./index.module.css";
 export default function ShopCard(props: any) {
     return (
         <Card id={ styles.card }>
-            <Card.Img variant="top" src={props.children.imageUrl} 
+            <Card.Img variant="top" src={props.children.image} 
                 width={180} height={100}/>
             <Card.Body>
                 <Card.Title>{ props.children.title }</Card.Title>

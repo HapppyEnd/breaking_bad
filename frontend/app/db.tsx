@@ -9,7 +9,7 @@ export const category = [
 export const products = [
   {
     id: 1,
-    imageUrl: "images/means/cement.jpg",
+    image: "images/means/cement.jpg",
     title: "Cement Cleaner",
     description: `Ищете эффективное решение для очистки цементных поверхностей? Позвольте представить вам наш продукт - цементный очиститель. Он разработан специально для удаления налета и загрязнений с бетонных, каменных и других цементных поверхностей.
 
@@ -31,7 +31,7 @@ export const products = [
   },
   {
     id: 2,
-    imageUrl: "images/means/gloss.jpg",
+    image: "images/means/gloss.jpg",
     title: "Gloss Concentrate",
     description: `Gloss Concentrate - это инновационный продукт, который переопределяет понятие глянцевой отделки. Сочетая в себе уникальные формулы и передовые технологии, этот концентрат превращает любую поверхность в потрясающе блестящую и зеркально гладкую.
 
@@ -51,7 +51,7 @@ export const products = [
   },
   {
     id: 3,
-    imageUrl: "images/means/wc-gel.jpg",
+    image: "images/means/wc-gel.jpg",
     title: "WC-gel",
     description: `Все, что вы хотели знать о WC-геле: особенности применения и плюсы использования
 
