@@ -28,8 +28,6 @@ export default async function createOrder(
         products: idCount
     })
 
-    console.log(bo)
-
     const query = await fetch(`${BASE_URL}/order/`, {
         method: 'POST',
         headers: {
@@ -44,8 +42,7 @@ export default async function createOrder(
 
     if (!query.ok) {
         //console.log(query.json().then(e => console.log(e)))
-        console.log('not ok')
-        return await query.json().then()
+        return await query.json()
     }
     return false
 }

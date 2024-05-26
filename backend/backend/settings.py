@@ -116,7 +116,7 @@ CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', default='*').split()
 
 CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', default='*').split()
 
-CSRF_COOKIE_DOMAIN = 'happpyend.ru'
+CSRF_COOKIE_DOMAIN = 'localhost:9000'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [

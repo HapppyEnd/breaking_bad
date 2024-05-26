@@ -17,10 +17,9 @@ export default function ModalCheckout(props: any) {
 
   const checkout = () => {
     const error = createOrder(name, phone, order)
-    console.log(error)
+    console.log('errorerror', error)
     error.then(e => {
-        if (e) {
-          console.log(e)
+        if (e) {  
           if (e.phone_number) {
             setPhoneHelp(false)
           }
@@ -28,8 +27,7 @@ export default function ModalCheckout(props: any) {
             setNameHelp(false)
           }
         } else {
-          console.log('fafa')
-          props.onHide()
+           props.onHide()
           setPhone("")
           setPhoneHelp(true)
           setName("")
