@@ -1,10 +1,10 @@
-from api.serializers import (CategoriesSerializer, CreateOrderSerializer, OrderSerializer,
-                             ProductSerializer)
+from api.serializers import (CategorySerializer, CreateOrderSerializer,
+                             OrderSerializer, ProductSerializer)
+from django.db.models import Count
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, permissions, viewsets
 from rest_framework.permissions import AllowAny
 from shopapp.models import Category, Order, Product
-from django.db.models import Count
 
 
 class ProductViewSet(viewsets.ModelViewSet):
@@ -19,7 +19,7 @@ class ProductViewSet(viewsets.ModelViewSet):
             if 'sales_number' in (params):
                 return Product.objects.all().annotate(
                     sales_number=Count('in_order__product')
-                    ).order_by(params)
+                ).order_by(params)
         return super().get_queryset()
 
 
@@ -33,6 +33,6 @@ class OrderViewSet(viewsets.ModelViewSet):
         return CreateOrderSerializer
 
 
-class CategorieViewSet(viewsets.ReadOnlyModelViewSet):
+class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Category.objects.all()
-    serializer_class = CategoriesSerializer    
+    serializer_class = CategorySerializer
