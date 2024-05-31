@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import getAllProducts from "@/app/action/get-products";
 import ErrorOrLoading from "../error-or-loading";
 import Link from "next/link";
+import createAddressBarOptions from "@/app/action/creates-address-bar-options";
 
 interface Category {
     results: {
@@ -18,7 +19,7 @@ export default function Category(props: {state: number}) {
 
     const fetchCategories = async () => {
         setLoading(true)
-        const response = await getAllProducts('categories', '', undefined)
+        const response = await getAllProducts('category', '', undefined)
         setCategories(response)
         setLoading(false)
     }
@@ -49,7 +50,7 @@ export default function Category(props: {state: number}) {
                         <Row
                             key={category.id}
                             className="px-16 py-1 text-base font-medium tracking-widest">
-                            <Link href={`shop/?category=${category.id}`}>
+                            <Link href={`shop/?${createAddressBarOptions('category')}category=${category.id}`}>
                                 {category.title}
                             </Link>
                         </Row>
